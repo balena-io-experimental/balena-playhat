@@ -1,0 +1,12 @@
+FROM resin/%%RESIN_MACHINE_NAME%%-python:2.7
+
+WORKDIR /usr/src/app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Copy our project source into the image
+COPY . /usr/src/app
+
+CMD [ "python", "main.py" ]
